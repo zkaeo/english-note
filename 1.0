@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Translation Notebook</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+    }
+    .sidebar {
+      width: 200px;
+      border-right: 1px solid #ccc;
+      padding: 1em;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 1em;
+    }
+    .entry {
+      display: flex;
+      margin-bottom: 1em;
+    }
+    .entry textarea {
+      width: 100%;
+      margin-right: 10px;
+    }
+    .note {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>内容列表</h2>
+    <ul id="list"></ul>
+    <button onclick="addEntry()">➕ 新建段落</button>
+  </div>
+  <div class="main" id="container">
+    <h1>我的中英对照本</h1>
+  </div>
+
+  <script>
+    let count = 0;
+    function addEntry() {
+      count++;
+      const container = document.getElementById("container");
+      const div = document.createElement("div");
+      div.className = "entry";
+      div.innerHTML = `
+        <textarea placeholder="English text"></textarea>
+        <textarea placeholder="中文翻译（可折叠）" class="chinese"></textarea>
+        <textarea placeholder="批注/单词" class="note"></textarea>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+</body>
+</html>
